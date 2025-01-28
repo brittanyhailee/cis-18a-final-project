@@ -24,8 +24,13 @@ public class GUI {
 
     }
 
+
     public static void main(String[] args) {
-        new GUI();
+        // new GUI();
+        Model m = new Model();
+        View v = new View();
+        Controller c = new Controller(m,v);
+        c.initView();
 
     }
 
