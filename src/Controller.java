@@ -8,6 +8,7 @@ public class Controller {
     }
 
     public void initView() {
+        view.View();
         view.Menu();
     }
 }
