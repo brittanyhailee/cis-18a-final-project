@@ -8,7 +8,7 @@ public class Controller {
     }
 
     public void initView() {
-        view.View();
+        view.Greet();
         view.Menu();
     }
 }
