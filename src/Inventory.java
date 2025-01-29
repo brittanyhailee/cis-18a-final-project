@@ -4,7 +4,8 @@ public class Inventory {
     private Product[] products = {
         new Product("ceremonial matcha", (float) 18.99),
         new Product("matcha whisk", (float) 5.99),
-        new Product("matcha bowl", (float) 8.99)
+        new Product("matcha bowl", (float) 7.99)
+        new Product("culinary matcha", (float) 9.99)
     };
 
     
