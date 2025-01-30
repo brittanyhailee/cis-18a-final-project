@@ -1,6 +1,4 @@
-public class Model {
-
-    
-
+public class Model {    
+    Customer customer = new Customer();
     
 }

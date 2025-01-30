@@ -3,6 +3,7 @@ import java.awt.*;
 // import javax.swing.JPanel;
 // import javax.swing.JFrame;
 // import javax.swing.BorderFactory;
+import java.io.IOException;
 
 public class GUI {
     public GUI() {
@@ -25,7 +26,7 @@ public class GUI {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // new GUI();
         Model m = new Model();
         View v = new View();
