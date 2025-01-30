@@ -13,9 +13,10 @@ public class Inventory {
     public void showInventory() {
         for (int i = 0; i < products.length; i++) {
             // System.out.print(products[i].product + "\t ‧₊˚❀༉‧₊˚. \t");
+            System.out.print(i + "𓈒⋆ ۪");
             System.out.printf("%20s", products[i].product);
             System.out.print("\t ‧₊˚❀༉‧₊˚. \t");
-            System.out.print(products[i].price);
+            System.out.print("$" + products[i].price);
             System.out.println();
         }
     }

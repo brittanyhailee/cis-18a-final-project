@@ -1,6 +1,7 @@
 import java.util.Vector;
 
 public class Cart {
+    
     class Item {
         String product;
         double price;

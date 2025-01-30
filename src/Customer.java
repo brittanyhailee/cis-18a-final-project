@@ -1,6 +1,10 @@
 class Customer {
-    private String fname, lname;
+    private String fname, lname, email;
     // Address address = new Address();
+
+    public void setEmail(String e) {
+        email = e;
+    }
 
     public void setFname(String n) {
         fname = n;
@@ -14,9 +18,15 @@ class Customer {
         return fname;
     }
 
-    public String setLname() {
+    public String getLname() {
         return lname;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+
 
 
 }
