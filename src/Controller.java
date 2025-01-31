@@ -32,6 +32,7 @@ public class Controller {
         model.customer.setLname(sc.nextLine());
     }
     private void Options() {
+        
         view.Options(model.customer, model.cart);
         System.out.print("Continue shopping (y/n)? ");
         status = sc.nextLine();
@@ -45,7 +46,6 @@ public class Controller {
             view.Menu();
             status = checkStat();
             if (status.equalsIgnoreCase(".")) Options();
-
 
         }
     }
