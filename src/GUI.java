@@ -26,7 +26,7 @@ public class GUI {
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws java.io.IOException {
         // new GUI();
         Model m = new Model();
         View v = new View();
