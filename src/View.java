@@ -20,10 +20,10 @@ public class View {
         System.out.println("\t\t𐙚Cart𐙚");
         for (int j = 0; j < cart.inCart.size(); j++) {
             // System.out.printf("%20s", products[i].product);
-            
+
             System.out.printf("%20s",cart.inCart.elementAt(j).product);
             System.out.print("\t‧₊˚❀༉\t");
-            System.out.print(cart.inCart.elementAt(j).quantity);
+            System.out.print("$"+cart.inCart.elementAt(j).price);
             System.out.println();
         }
 

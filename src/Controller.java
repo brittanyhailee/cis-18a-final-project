@@ -36,7 +36,7 @@ public class Controller {
         String result;
         sc = new Scanner(System.in); // Create new scanner object to clear buffer
         System.out.println("Continue shopping (y/p/n/.)? ");
-        System.out.println("y - yes\nn - no\np - purchase\n . - options");
+        System.out.println("y - yes\t|     n - no\t| p - purchase\t| . - options");
         System.out.print("Choice >> ");
         result = sc.nextLine();
         System.out.println();
