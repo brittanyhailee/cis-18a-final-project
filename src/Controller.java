@@ -21,11 +21,11 @@ public class Controller {
         q = sc.nextInt();
         model.cart.addToCart(view.inv.products[i].product, view.inv.products[i].price, q);
 
-        System.out.println("In cart: ");
-        for (int j = 0; j < model.cart.inCart.size(); j++) {
-            System.out.println(model.cart.inCart.elementAt(j).product);
-            System.out.println(model.cart.inCart.elementAt(j).quantity);
-        }
+        // System.out.println("In cart: ");
+        // for (int j = 0; j < model.cart.inCart.size(); j++) {
+        //     System.out.println(model.cart.inCart.elementAt(j).product);
+        //     System.out.println(model.cart.inCart.elementAt(j).quantity);
+        // }
         status = "y";
 
         shopView();
