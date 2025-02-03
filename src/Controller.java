@@ -40,8 +40,8 @@ public class Controller {
         System.out.print("Choice >> ");
         result = sc.nextLine();
         System.out.println();
-        System.out.println("result is " + result);
-        // System.out.println("will return " + ((result == "y") ? true : false));
+        // System.out.println("result is " + result);
+
         return (result.equalsIgnoreCase("y")) ? "y"
                 : result.equalsIgnoreCase(".") ? "." : result.equalsIgnoreCase("p") ? "p" : "n";
     }
