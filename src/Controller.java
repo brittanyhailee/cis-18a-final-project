@@ -26,18 +26,21 @@ public class Controller {
             System.out.println(model.cart.inCart.elementAt(j).product);
             System.out.println(model.cart.inCart.elementAt(j).quantity);
         }
-        
+        status = "y";
+
+        shopView();
 
     }
 
     private String checkStat() {
         String result;
+        sc = new Scanner(System.in); // Create new scanner object to clear buffer
         System.out.println("Continue shopping (y/p/n/.)? ");
         System.out.println("y - yes\nn - no\np - purchase\n . - options");
         System.out.print("Choice >> ");
         result = sc.nextLine();
         System.out.println();
-        // System.out.println("result is " + result);
+        System.out.println("result is " + result);
         // System.out.println("will return " + ((result == "y") ? true : false));
         return (result.equalsIgnoreCase("y")) ? "y"
                 : result.equalsIgnoreCase(".") ? "." : result.equalsIgnoreCase("p") ? "p" : "n";
@@ -63,8 +66,12 @@ public class Controller {
     public void initView() {
         view.Greet();
         logIn();
+        shopView();
+    }
 
-        while (status.equalsIgnoreCase("y")) {
+    public void shopView() {
+
+        do {
             view.Menu();
             // System.out.println("Enter item number to purchase: ");
 
@@ -74,7 +81,7 @@ public class Controller {
             if (status.equalsIgnoreCase("."))
                 Options();
 
-        }
+        } while (status.equalsIgnoreCase("y"));
     }
 
 }
