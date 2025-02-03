@@ -7,7 +7,9 @@ public class Product {
         this.product = n;
         this.price = p;
     }
-    Product(int q) {
+    Product(String n, int q, float p) {
+        product = n;
         quantity = q;
+        price = p;
     }
 }

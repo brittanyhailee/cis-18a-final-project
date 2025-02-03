@@ -1,7 +1,6 @@
 public class Inventory {
 
-
-    private Product[] products = {
+    final Product[] products = {
         new Product("ceremonial matcha", (float) 18.99),
         new Product("matcha whisk", (float) 5.99),
         new Product("matcha bowl", (float) 7.99),

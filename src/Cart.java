@@ -2,21 +2,21 @@ import java.util.Vector;
 
 public class Cart {
     
-    class Item {
-        String product;
-        double price;
-        int quantity;
-        Item(String product, double price, int quant) {
-            this.product = product;
-            this.price = price;
-            this.quantity = quant;
-        }
-    }
-    Vector<Item> cart;
+    // class Item {
+    //     String product;
+    //     double price;
+    //     int quantity;
+    //     Item(String product, double price, int quant) {
+    //         this.product = product;
+    //         this.price = price;
+    //         this.quantity = quant;
+    //     }
+    // }
 
-    void addToCart(String product, double price, int quant) {
-        Item i = new Item(product, price, quant);
-        cart.add(i);
+    Vector<Product> inCart = new Vector<Product>();
+    void addToCart(String product, float price, int quant) {
+        Product p = new Product(product, quant, price);
+        inCart.add(p);
     }
 }
 
