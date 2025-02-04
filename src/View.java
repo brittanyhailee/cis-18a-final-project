@@ -6,6 +6,7 @@ public class View {
                         "⠀⠀ ⠀⠀ ⠀⠀ ⠀⠀ ⠀⠀ ⠀⠀ ⠀⠀ `· . 𐙚" + "\n");
     }
     public void Menu() {
+        System.out.println("\n\n\t\t❀༉Menu❀༉");
         inv.showInventory();
         System.out.println("\nPress '.' for Options");
     }

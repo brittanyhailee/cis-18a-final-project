@@ -59,8 +59,9 @@ public class Controller {
     private void Options() {
 
         view.Options(model.customer, model.cart);
-        System.out.print("Continue shopping (y/n)? ");
+        System.out.print("\nContinue shopping (y/n)? ");
         status = sc.nextLine();
+        System.out.println();
     }
 
     public void initView() {
