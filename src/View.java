@@ -8,7 +8,7 @@ public class View {
     public void Menu() {
         System.out.println("\n\n\t\t❀༉Menu❀༉");
         inv.showInventory();
-        System.out.println("\nPress '.' for Options");
+        // System.out.println("\nPress '.' for Options");
     }
 
     public void Options(Customer c, Cart cart) {
