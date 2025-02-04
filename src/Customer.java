@@ -1,6 +1,6 @@
 class Customer {
     private String fname, lname, email;
-    // Address address = new Address();
+    Address address = new Address();
 
     public void setEmail(String e) {
         email = e;
@@ -32,11 +32,42 @@ class Customer {
 }
 
 class Address {
-    int houseNum;
     String street;
     String city;
     String state;
     int zip;
+
+    public void setStreetAddr(String s) {
+        street = s;
+    }
+
+    public void setCity(String c) {
+        city = c;
+    }
+
+    public void setState(String s) {
+        state = s;
+    }
+
+    public void setZip(int z) {
+        zip = z; 
+    }
+
+    public String getStreetAddr() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public int getZip() {
+        return zip;
+    }
 
 }
 

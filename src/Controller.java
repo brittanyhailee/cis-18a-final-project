@@ -36,7 +36,7 @@ public class Controller {
         String result;
         sc = new Scanner(System.in); // Create new scanner object to clear buffer
         System.out.println("Continue shopping (y/p/n/.)? ");
-        System.out.println("y - yes\t|     n - no\t| p - purchase\t| . - options");
+        System.out.println("y - yes\t|     n - no\t| p - purchase\t|  c - cart | . - options");
         System.out.print("Choice >> ");
         result = sc.nextLine();
         System.out.println();
@@ -53,16 +53,14 @@ public class Controller {
             case "p":
                 purchase();
                 break;
+            case "c":
+                getCart(model.cart);
+                break;
             default:
                 System.out.println("Invalid input! Please try again.");
                 checkStat();
                 
         }
-        // System.out.println("result is " + result);
-
-
-        // return (result.equalsIgnoreCase("y")) ? "y"
-        //         : result.equalsIgnoreCase(".") ? "." : result.equalsIgnoreCase("p") ? "p" : "n";
     }
 
     private void logIn() {
@@ -77,8 +75,37 @@ public class Controller {
 
     private void Options() {
 
-        view.Options(model.customer, model.cart);
+        view.Options(model.customer);
         checkStat();
+    }
+
+    private void getCart(Cart c) {
+        view.showCart(c);
+        checkOut();
+
+    }
+
+    private void checkOut() {
+        System.out.println("Checkout? ");
+        System.out.println("  y - yes\t|     n - no\t| . - options");
+        System.out.print("Choice >> ");
+        status = sc.nextLine();
+        if (status.equals("y")) {
+            String s;
+            int i;
+            System.out.print("Street Address: ");
+            s = sc.nextLine();
+            model.customer.address.setStreetAddr(s);
+            System.out.print("City: ");
+            s = sc.nextLine();
+            model.customer.address.setCity(s);
+            System.out.print("State: ");
+            s = sc.nextLine();
+            model.customer.address.setState(s);
+            System.out.print("Zip Code: ");
+            i = sc.nextInt();
+            model.customer.address.setZip(i);
+        }
     }
 
     public void initView() {

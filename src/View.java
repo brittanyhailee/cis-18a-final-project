@@ -11,13 +11,17 @@ public class View {
         // System.out.println("\nPress '.' for Options");
     }
 
-    public void Options(Customer c, Cart cart) {
+    public void Options(Customer c) {
         System.out.println("\t\t𐙚Options𐙚");
         System.out.println("\tFirst name: \t" + c.getFname());
         System.out.println("\tLast name: \t" + c.getLname());
         System.out.println("\tEmail: \t\t" + c.getEmail());
 
         System.out.println();
+
+    }
+
+    public void showCart(Cart cart) {
         System.out.println("\t\t𐙚Cart𐙚");
         for (int j = 0; j < cart.inCart.size(); j++) {
             // System.out.printf("%20s", products[i].product);
@@ -27,7 +31,7 @@ public class View {
             System.out.print("$"+cart.inCart.elementAt(j).price);
             System.out.println();
         }
-
+        
     }
     
 }
