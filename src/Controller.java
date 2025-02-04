@@ -91,14 +91,8 @@ public class Controller {
 
         do {
             view.Menu();
-            // System.out.println("Enter item number to purchase: ");
-
             checkStat();
-            // if (status.equalsIgnoreCase("p"))
-            //     purchase();
-            // if (status.equalsIgnoreCase("."))
-            //     Options();
-
+    
         } while (true);
     }
 
