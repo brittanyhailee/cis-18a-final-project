@@ -32,7 +32,7 @@ public class Controller {
 
     }
 
-    private String checkStat() {
+    private void checkStat() {
         String result;
         sc = new Scanner(System.in); // Create new scanner object to clear buffer
         System.out.println("Continue shopping (y/p/n/.)? ");
@@ -40,10 +40,29 @@ public class Controller {
         System.out.print("Choice >> ");
         result = sc.nextLine();
         System.out.println();
+
+        switch(result) {
+            case "y":
+                shopView();
+                break;
+            case ".":
+                Options();
+                break;
+            case "n":
+                System.exit(0);
+            case "p":
+                purchase();
+                break;
+            default:
+                System.out.println("Invalid input! Please try again.");
+                checkStat();
+                
+        }
         // System.out.println("result is " + result);
 
-        return (result.equalsIgnoreCase("y")) ? "y"
-                : result.equalsIgnoreCase(".") ? "." : result.equalsIgnoreCase("p") ? "p" : "n";
+
+        // return (result.equalsIgnoreCase("y")) ? "y"
+        //         : result.equalsIgnoreCase(".") ? "." : result.equalsIgnoreCase("p") ? "p" : "n";
     }
 
     private void logIn() {
@@ -76,13 +95,13 @@ public class Controller {
             view.Menu();
             // System.out.println("Enter item number to purchase: ");
 
-            status = checkStat();
-            if (status.equalsIgnoreCase("p"))
-                purchase();
-            if (status.equalsIgnoreCase("."))
-                Options();
+            checkStat();
+            // if (status.equalsIgnoreCase("p"))
+            //     purchase();
+            // if (status.equalsIgnoreCase("."))
+            //     Options();
 
-        } while (status.equalsIgnoreCase("y"));
+        } while (true);
     }
 
 }
