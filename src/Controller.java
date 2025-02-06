@@ -1,9 +1,13 @@
 import java.util.Scanner;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 
 public class Controller {
     private Model model;
     private View view;
     private String status = "y";
+    private Delivery delivery = new Delivery();
 
     Scanner sc = new Scanner(System.in);
 
@@ -33,15 +37,15 @@ public class Controller {
     }
 
     private void checkStat() {
-        String result;
+        String choice;
         sc = new Scanner(System.in); // Create new scanner object to clear buffer
         System.out.println("Continue shopping (y/p/n/.)? ");
         System.out.println("y - yes\t|     n - no\t| p - purchase\t|  c - cart | . - options");
         System.out.print("Choice >> ");
-        result = sc.nextLine();
+        choice = sc.nextLine();
         System.out.println();
 
-        switch(result) {
+        switch(choice) {
             case "y":
                 shopView();
                 break;
@@ -105,7 +109,19 @@ public class Controller {
             System.out.print("Zip Code: ");
             i = sc.nextInt();
             model.customer.address.setZip(i);
+            setDelivery();
+        } else if (status.equals("n")) {
+            shopView();
+        } else if (status.equals(".")) {
+            Options();
+        } else {
+            System.out.println("\n\nInvalid Input. Please try again!");
+            checkOut();
         }
+    }
+
+    private void setDelivery() {
+        delivery.getSystemTime();
     }
 
     public void initView() {
