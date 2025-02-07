@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import com.toedter.calendar.JDateChooser;
 
-public class Delivery {
+public class Delivery extends checkout {
 
     private JFrame jFrame1; 
     private JSeparator jSeparator1;
@@ -12,13 +12,10 @@ public class Delivery {
     private JLabel jLabel1;
     private JButton jButton1;
     private String deliveryDate;
-    public Boolean status;
-    private String name;
-    private Cart cart;
 
     public Delivery(String n, Cart c) {
-        name = n;
-        cart = c;
+        super.setName(n);
+        super.setCart(c);
         initComponents();
     }
 
@@ -63,13 +60,11 @@ public class Delivery {
         try {
             Date date = jDateChooser3.getDate();
             deliveryDate = f.format(date);
-            System.out.println("\nOrder for " + name);
-            for (int j = 0; j < cart.inCart.size(); j++) {
-                // System.out.printf("%20s", products[i].product);
-    
-                System.out.printf("%20s",cart.inCart.elementAt(j).product);
+            System.out.printf("%10s", "\n\t𐙚 Order for " + super.getName() +" 𐙚\n");
+            for (int j = 0; j < super.getCart().inCart.size(); j++) {
+                System.out.printf("%20s", super.getCart().inCart.elementAt(j).product);
                 System.out.print("\t‧₊˚❀༉\t");
-                System.out.print("$"+cart.inCart.elementAt(j).price);
+                System.out.print("$"+ super.getCart().inCart.elementAt(j).price);
                 System.out.println();
             }
 
@@ -86,24 +81,7 @@ public class Delivery {
     public String returnDate() {
         return deliveryDate;
     }
-    public Boolean status() {
-        return status;
-    }
+
 }
      
-
- 
-// </editor-fold>         
-    
-    // Variables declaration - do not modify    
-
-    // private javax.swing.JButton jButton1;
-    // private com.toedter.calendar.JDateChooser jDateChooser1;
-    // private com.toedter.calendar.JDateChooser jDateChooser2;
-    // private com.toedter.calendar.JDateChooser jDateChooser3;
-    // private javax.swing.JFrame jFrame1;
-    // private javax.swing.JLabel jLabel1;
-    // private javax.swing.JSeparator jSeparator1;
-
-    // End of variables declaration         
 
