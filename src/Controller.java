@@ -39,8 +39,8 @@ public class Controller {
     private void checkStat() {
         String choice;
         sc = new Scanner(System.in); // Create new scanner object to clear buffer
-        System.out.println("Continue shopping (y/p/n/.)? ");
-        System.out.println("y - yes\t|     n - no\t| p - purchase\t|  c - cart | . - options");
+        System.out.println("Continue shopping (y/p/n/c/.)? ");
+        System.out.println("y - yes\t| p - purchase\t|     n - no\t|  c - cart | . - options");
         System.out.print("Choice >> ");
         choice = sc.nextLine();
         System.out.println();
