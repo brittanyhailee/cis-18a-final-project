@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import com.toedter.calendar.JDateChooser;
 
-public class Delivery extends checkout {
+public class Delivery extends Checkout {
 
     private JFrame jFrame1; 
     private JSeparator jSeparator1;
@@ -69,6 +69,7 @@ public class Delivery extends checkout {
             }
 
             System.out.println("Delivery Date: " + deliveryDate);
+            super.checkOut();
             return;
 
         } catch(Exception e) {

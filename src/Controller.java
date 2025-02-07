@@ -125,7 +125,7 @@ public class Controller {
 
     private void setDelivery() {
         System.out.println("Set delivery date on calendar application...");
-        new Delivery(model.customer.getFname(), model.cart);            
+        new Delivery(model.customer.getFname(), model.cart);         
      
     }
 
