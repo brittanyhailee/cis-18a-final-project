@@ -7,7 +7,8 @@ public class Controller {
     private Model model;
     private View view;
     private String status = "y";
-    private Delivery delivery = new Delivery();
+    // private Delivery delivery = new Delivery();
+    private MyFirstForm f = new MyFirstForm();
 
     Scanner sc = new Scanner(System.in);
 
@@ -115,13 +116,16 @@ public class Controller {
         } else if (status.equals(".")) {
             Options();
         } else {
-            System.out.println("\n\nInvalid Input. Please try again!");
+            System.out.println("\n\nInvalid input. Please try again!");
             checkOut();
         }
     }
 
     private void setDelivery() {
-        delivery.getSystemTime();
+        System.out.println("Set delivery date on calendar application: ");
+        f.Delivery();
+        // delivery.Calendar();
+        // delivery.getSystemTime();
     }
 
     public void initView() {
