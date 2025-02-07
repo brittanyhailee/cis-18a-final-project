@@ -2,12 +2,14 @@ import java.util.Scanner;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import javax.swing.JButton;
 
 public class Controller {
     private Model model;
     private View view;
     private String status = "y";
-    // private Delivery delivery = new Delivery();
+    private String deliveryDate = "";
+    // private Delivery delivery;
     // private MyFirstForm f = new MyFirstForm();
 
     Scanner sc = new Scanner(System.in);
@@ -122,11 +124,17 @@ public class Controller {
     }
 
     private void setDelivery() {
-        System.out.println("Set delivery date on calendar application: ");
-        new Delivery();
-        // delivery.Calendar();
-        // delivery.getSystemTime();
+        System.out.println("Set delivery date on calendar application...");
+        new Delivery(model.customer.getFname(), model.cart);            
+     
     }
+
+    // private void deliveryInfo() {
+    //     System.out.println("Order for " + model.customer.getFname());
+    //     deliveryDate = delivery.returnDate();
+    //     System.out.println("Delivery will arrive on " + deliveryDate);
+    // }
+    
 
     public void initView() {
         view.Greet();
@@ -135,12 +143,11 @@ public class Controller {
     }
 
     public void shopView() {
-
-        do {
-            view.Menu();
-            checkStat();
-    
-        } while (true);
+            do {
+                view.Menu();
+                checkStat();
+        
+            } while (true);
     }
 
 }

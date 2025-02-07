@@ -11,12 +11,17 @@ public class Delivery {
     private JDateChooser jDateChooser3;
     private JLabel jLabel1;
     private JButton jButton1;
+    private String deliveryDate;
+    public Boolean status;
+    private String name;
+    private Cart cart;
 
-    public Delivery() {
+    public Delivery(String n, Cart c) {
+        name = n;
+        cart = c;
         initComponents();
     }
 
- 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
@@ -56,23 +61,33 @@ public class Delivery {
         Date d1 = null;
         
         try {
-//            new SimpleDateFormat("yyyy-MM-dd").parse(date);
             Date date = jDateChooser3.getDate();
-            String formattedDate = f.format(date);
-//            d1 = f.parse(formattedDate);
-            System.out.println("Delivery Date: " + formattedDate);
+            deliveryDate = f.format(date);
+            System.out.println("\nOrder for " + name);
+            for (int j = 0; j < cart.inCart.size(); j++) {
+                // System.out.printf("%20s", products[i].product);
+    
+                System.out.printf("%20s",cart.inCart.elementAt(j).product);
+                System.out.print("\t‧₊˚❀༉\t");
+                System.out.print("$"+cart.inCart.elementAt(j).price);
+                System.out.println();
+            }
+
+            System.out.println("Delivery Date: " + deliveryDate);
+            return;
+
         } catch(Exception e) {
-            e.printStackTrace();
+            System.out.println("Please pick a valid date!");
+            // e.printStackTrace();
         }
+        return;
     } 
 
-    public static void main(String[] args) {
-        // Run the application
-        // SwingUtilities.invokeLater(new Runnable() {
-        //     public void run() {
-        //         new Delivery();
-        //     }
-        // });
+    public String returnDate() {
+        return deliveryDate;
+    }
+    public Boolean status() {
+        return status;
     }
 }
      
