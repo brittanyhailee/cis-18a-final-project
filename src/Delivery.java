@@ -29,7 +29,7 @@ public class Delivery extends Checkout {
         
         // Set up the JFrame layout and components
         jFrame1.setLayout(null);
-        jFrame1.setSize(400, 300); // Set the size of the JFrame
+        jFrame1.setSize(600, 400); // Set the size of the JFrame
 
         jLabel1.setBounds(115, 31, 179, 35); // x, y, width, height
         jFrame1.add(jLabel1);
@@ -69,7 +69,7 @@ public class Delivery extends Checkout {
             }
 
             System.out.println("Delivery Date: " + deliveryDate);
-            super.checkOut();
+            super.checkOut(deliveryDate);
 
             return;
 
