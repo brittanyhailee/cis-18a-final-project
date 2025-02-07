@@ -70,6 +70,7 @@ public class Delivery extends Checkout {
 
             System.out.println("Delivery Date: " + deliveryDate);
             super.checkOut();
+
             return;
 
         } catch(Exception e) {
