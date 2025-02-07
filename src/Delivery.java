@@ -26,18 +26,20 @@ public class Delivery extends Checkout {
         jLabel1 = new JLabel("Set Delivery Date");
         jButton1 = new JButton("Set Date");
         jDateChooser3 = new JDateChooser();
+
+        
         
         // Set up the JFrame layout and components
         jFrame1.setLayout(null);
         jFrame1.setSize(600, 400); // Set the size of the JFrame
 
-        jLabel1.setBounds(115, 31, 179, 35); // x, y, width, height
+        jLabel1.setBounds(230, 60, 179, 35); // x, y, width, height
         jFrame1.add(jLabel1);
 
-        jDateChooser3.setBounds(115, 75, 221, 36); // x, y, width, height
+        jDateChooser3.setBounds(205, 105, 221, 36); // x, y, width, height
         jFrame1.add(jDateChooser3);
 
-        jButton1.setBounds(148, 130, 111, 45); // x, y, width, height
+        jButton1.setBounds(240, 160, 111, 45); // x, y, width, height
         jFrame1.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,7 +55,6 @@ public class Delivery extends Checkout {
         jFrame1.setVisible(true);
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
         SimpleDateFormat f = new SimpleDateFormat("MMMM dd yyyy");
         Date d1 = null;
         

@@ -24,13 +24,14 @@ public class Checkout  {
 
     public void checkOut(String date) {
         Vector<String> columns = new Vector<>();
+
         columns.add("Product");
         columns.add("Quantity");
         columns.add("Price");
 
         String text = "𐙚 Order for " + getName() +" 𐙚";
         JLabel name = new JLabel(text);
-        JLabel delivery = new JLabel(date);
+        JLabel delivery = new JLabel("Delivery: " + date);
 
         containerPanel.add(name);
         containerPanel.add(delivery);
