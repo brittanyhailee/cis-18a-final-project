@@ -8,7 +8,7 @@ public class Controller {
     private View view;
     private String status = "y";
     // private Delivery delivery = new Delivery();
-    private MyFirstForm f = new MyFirstForm();
+    // private MyFirstForm f = new MyFirstForm();
 
     Scanner sc = new Scanner(System.in);
 
@@ -123,7 +123,7 @@ public class Controller {
 
     private void setDelivery() {
         System.out.println("Set delivery date on calendar application: ");
-        f.Delivery();
+        new Delivery();
         // delivery.Calendar();
         // delivery.getSystemTime();
     }
