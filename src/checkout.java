@@ -28,6 +28,7 @@ public class Checkout  {
         JPanel topPanel = new JPanel();
         // topPanel.setLayout(new GridLayout(2,1));
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS)); // Stack vertically
+        JButton payment = new JButton("Proceed to Payment");
 
      
         columns.add("Product");
@@ -68,17 +69,23 @@ public class Checkout  {
          // Add the table to a scroll pane
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setPreferredSize(new Dimension(350, 240));
- 
-        jFrame.add(topPanel, BorderLayout.NORTH);
-        containerPanel.add(scrollPane);
 
-        
+
+        // Set containerPanel layout to BoxLayout (vertical)
+        containerPanel.setLayout(new BoxLayout(containerPanel, BoxLayout.Y_AXIS));  // Stack components vertically
+        containerPanel.add(scrollPane); // Add scrollPane with the table
+
+        scrollPane.setMaximumSize(new Dimension(400, 260));
+        scrollPane.setMinimumSize(new Dimension(350, 240));
+
+        containerPanel.add(Box.createVerticalStrut(10));  // Add space between table and button
+        payment.setAlignmentX(Component.CENTER_ALIGNMENT); 
+        containerPanel.add(payment); // Add Proceed to Payment button
+
+        jFrame.add(topPanel, BorderLayout.NORTH);        
         jFrame.add(containerPanel);
         jFrame.setSize(600, 400);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-       
-
         jFrame.setVisible(true);
 
 
