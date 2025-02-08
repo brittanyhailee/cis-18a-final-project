@@ -28,10 +28,10 @@ public class View {
 
             System.out.printf("%20s",cart.inCart.elementAt(j).product);
             System.out.print("\t‧₊˚❀༉\t");
-            System.out.print("$"+cart.inCart.elementAt(j).price);
+            System.out.print("$"+cart.inCart.elementAt(j).price + "(x" + cart.inCart.elementAt(j).quantity +")");
             System.out.println();
         }
-        
+        System.out.println("\t\t ❀༉ Total: $" + cart.calculateTotal() + " ༉❀");
     }
     
 }

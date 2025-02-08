@@ -10,7 +10,6 @@ public class Checkout  {
     private Cart cart;
     private JPanel containerPanel = new JPanel();
     private JFrame  jFrame = new JFrame("Checkout");
-    private JLabel customerCart;
 
     public void setName(String n) {
         name = n;
@@ -29,6 +28,7 @@ public class Checkout  {
         // topPanel.setLayout(new GridLayout(2,1));
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS)); // Stack vertically
         JButton payment = new JButton("Proceed to Payment");
+        JLabel total = new JLabel(("❀༉Net total: $" + cart.calculateTotal() + " ❀༉").toString());
 
      
         columns.add("Product");
@@ -45,7 +45,6 @@ public class Checkout  {
 
         topPanel.add(Box.createVerticalStrut(10)); // Add space before the name label (optional)
         topPanel.add(name);
-
         topPanel.add(Box.createVerticalStrut(10)); // Add space before the name delivery (optional)
         topPanel.add(delivery);
         topPanel.add(Box.createVerticalStrut(10)); // Add space after the delivery label (optional)
@@ -75,12 +74,18 @@ public class Checkout  {
         containerPanel.setLayout(new BoxLayout(containerPanel, BoxLayout.Y_AXIS));  // Stack components vertically
         containerPanel.add(scrollPane); // Add scrollPane with the table
 
-        scrollPane.setMaximumSize(new Dimension(400, 260));
-        scrollPane.setMinimumSize(new Dimension(350, 240));
+        scrollPane.setMaximumSize(new Dimension(400, 230));
+        scrollPane.setMinimumSize(new Dimension(400, 230));
+
+        containerPanel.add(Box.createVerticalStrut(10));
+        total.setAlignmentX(Component.CENTER_ALIGNMENT);
+        containerPanel.add(total);
 
         containerPanel.add(Box.createVerticalStrut(10));  // Add space between table and button
         payment.setAlignmentX(Component.CENTER_ALIGNMENT); 
         containerPanel.add(payment); // Add Proceed to Payment button
+
+
 
         jFrame.add(topPanel, BorderLayout.NORTH);        
         jFrame.add(containerPanel);
