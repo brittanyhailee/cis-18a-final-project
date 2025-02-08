@@ -1,5 +1,6 @@
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.Vector;
@@ -24,7 +25,11 @@ public class Checkout  {
 
     public void checkOut(String date) {
         Vector<String> columns = new Vector<>();
+        JPanel topPanel = new JPanel();
+        // topPanel.setLayout(new GridLayout(2,1));
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS)); // Stack vertically
 
+     
         columns.add("Product");
         columns.add("Quantity");
         columns.add("Price");
@@ -33,9 +38,17 @@ public class Checkout  {
         JLabel name = new JLabel(text);
         JLabel delivery = new JLabel("Delivery: " + date);
 
-        containerPanel.add(name);
-        containerPanel.add(delivery);
-        
+        name.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the name label
+        delivery.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the delivery label
+
+
+        topPanel.add(Box.createVerticalStrut(10)); // Add space before the name label (optional)
+        topPanel.add(name);
+
+        topPanel.add(Box.createVerticalStrut(10)); // Add space before the name delivery (optional)
+        topPanel.add(delivery);
+        topPanel.add(Box.createVerticalStrut(10)); // Add space after the delivery label (optional)
+
         Vector<Vector<Object>> tableData = new Vector<>();
 
         for (int j = 0; j < cart.inCart.size(); j++) {
@@ -50,27 +63,17 @@ public class Checkout  {
 
         DefaultTableModel model = new DefaultTableModel(tableData, columns);
          // Create the table
-         JTable table = new JTable(model);
+        JTable table = new JTable(model);
 
          // Add the table to a scroll pane
-         JScrollPane scrollPane = new JScrollPane(table);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setPreferredSize(new Dimension(350, 240));
  
-         containerPanel.add(scrollPane);
-
-         // Add the scroll pane to the frame
-        //  jFrame.add(scrollPane);
-
-        // for (int j = 0; j < cart.inCart.size(); j++) {
-        //     System.out.printf("%20s", cart.inCart.elementAt(j).product);
-        //     JLabel prod = new JLabel(cart.inCart.elementAt(j).product + "\t‧₊˚❀༉\t" + "$"+ cart.inCart.elementAt(j).price);
-        //     // System.out.print("\t‧₊˚❀༉\t");
-        //     // System.out.print("$"+ cart.inCart.elementAt(j).price);
-        //     containerPanel.add(prod);
-        // }
+        jFrame.add(topPanel, BorderLayout.NORTH);
+        containerPanel.add(scrollPane);
 
         
-
-        jFrame.add(containerPanel, BorderLayout.NORTH);
+        jFrame.add(containerPanel);
         jFrame.setSize(600, 400);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
