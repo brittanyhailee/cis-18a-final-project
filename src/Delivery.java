@@ -7,7 +7,6 @@ import com.toedter.calendar.JDateChooser;
 public class Delivery extends Checkout {
 
     private JFrame jFrame1; 
-    private JSeparator jSeparator1;
     private JDateChooser jDateChooser3;
     private JLabel jLabel1;
     private JButton jButton1;
