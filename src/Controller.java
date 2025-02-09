@@ -1,9 +1,16 @@
 import java.util.Scanner;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import javax.swing.JButton;
 
 public class Controller {
     private Model model;
     private View view;
     private String status = "y";
+    private String deliveryDate = "";
+    // private Delivery delivery;
+    // private MyFirstForm f = new MyFirstForm();
 
     Scanner sc = new Scanner(System.in);
 
@@ -33,15 +40,15 @@ public class Controller {
     }
 
     private void checkStat() {
-        String result;
+        String choice;
         sc = new Scanner(System.in); // Create new scanner object to clear buffer
-        System.out.println("Continue shopping (y/p/n/.)? ");
-        System.out.println("y - yes\t|     n - no\t| p - purchase\t| . - options");
+        System.out.println("Continue shopping (y/p/n/c/.)? ");
+        System.out.println("y - yes\t| p - purchase\t|     n - no\t|  c - cart | . - options");
         System.out.print("Choice >> ");
-        result = sc.nextLine();
+        choice = sc.nextLine();
         System.out.println();
 
-        switch(result) {
+        switch(choice) {
             case "y":
                 shopView();
                 break;
@@ -53,16 +60,14 @@ public class Controller {
             case "p":
                 purchase();
                 break;
+            case "c":
+                getCart(model.cart);
+                break;
             default:
                 System.out.println("Invalid input! Please try again.");
                 checkStat();
                 
         }
-        // System.out.println("result is " + result);
-
-
-        // return (result.equalsIgnoreCase("y")) ? "y"
-        //         : result.equalsIgnoreCase(".") ? "." : result.equalsIgnoreCase("p") ? "p" : "n";
     }
 
     private void logIn() {
@@ -77,9 +82,59 @@ public class Controller {
 
     private void Options() {
 
-        view.Options(model.customer, model.cart);
+        view.Options(model.customer);
         checkStat();
     }
+
+    private void getCart(Cart c) {
+        view.showCart(c);
+        checkOut();
+
+    }
+
+    private void checkOut() {
+        System.out.println("Checkout? ");
+        System.out.println("  y - yes\t|     n - no\t| . - options");
+        System.out.print("Choice >> ");
+        status = sc.nextLine();
+        if (status.equals("y")) {
+            String s;
+            int i;
+            System.out.print("Street Address: ");
+            s = sc.nextLine();
+            model.customer.address.setStreetAddr(s);
+            System.out.print("City: ");
+            s = sc.nextLine();
+            model.customer.address.setCity(s);
+            System.out.print("State: ");
+            s = sc.nextLine();
+            model.customer.address.setState(s);
+            System.out.print("Zip Code: ");
+            i = sc.nextInt();
+            model.customer.address.setZip(i);
+            setDelivery();
+        } else if (status.equals("n")) {
+            shopView();
+        } else if (status.equals(".")) {
+            Options();
+        } else {
+            System.out.println("\n\nInvalid input. Please try again!");
+            checkOut();
+        }
+    }
+
+    private void setDelivery() {
+        System.out.println("Set delivery date on calendar application...");
+        new Delivery(model.customer.getFname(), model.cart);         
+     
+    }
+
+    // private void deliveryInfo() {
+    //     System.out.println("Order for " + model.customer.getFname());
+    //     deliveryDate = delivery.returnDate();
+    //     System.out.println("Delivery will arrive on " + deliveryDate);
+    // }
+    
 
     public void initView() {
         view.Greet();
@@ -88,12 +143,11 @@ public class Controller {
     }
 
     public void shopView() {
-
-        do {
-            view.Menu();
-            checkStat();
-    
-        } while (true);
+            do {
+                view.Menu();
+                checkStat();
+        
+            } while (true);
     }
 
 }

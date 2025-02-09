@@ -1,3 +1,4 @@
+
 public class Product {
     String product;
     float price;

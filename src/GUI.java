@@ -1,9 +1,9 @@
+/* This is a business program selling matcha
+ * GUI.java contains the main() program.
+ * To run the program, select 'Run and Debug' on VSCode or other IDEs 
+ */
 import javax.swing.*;
 import java.awt.*;
-// import javax.swing.JPanel;
-// import javax.swing.JFrame;
-// import javax.swing.BorderFactory;
-// import java.io.IOException;
 
 public class GUI {
     public GUI() {
