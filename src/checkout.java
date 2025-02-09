@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.Vector;
 
-public class Checkout  {
+public class Checkout implements Payment {
     private String name;
     private Cart cart;
     private JPanel containerPanel = new JPanel();
@@ -22,13 +22,21 @@ public class Checkout  {
     public String getName() { return name; }
     public Cart getCart() { return cart; }
 
+    @Override
+    public float calculateTotal() {
+        float deliveryFee = (float) 4.50;
+        float tot = cart.calculateTotal() + deliveryFee;
+        return tot;
+    }
+
     public void checkOut(String date) {
         Vector<String> columns = new Vector<>();
         JPanel topPanel = new JPanel();
         // topPanel.setLayout(new GridLayout(2,1));
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS)); // Stack vertically
         JButton payment = new JButton("Proceed to Payment");
-        JLabel total = new JLabel(("❀༉Net total: $" + cart.calculateTotal() + " ❀༉").toString());
+        JLabel total = new JLabel(("❀༉Total: $" + cart.calculateTotal() + " ❀༉").toString());
+        JLabel totalWithDelivery = new JLabel(("  +$4.50 Delivery Fee: $" + calculateTotal()).toString());
 
      
         columns.add("Product");
@@ -81,6 +89,10 @@ public class Checkout  {
         total.setAlignmentX(Component.CENTER_ALIGNMENT);
         containerPanel.add(total);
 
+        containerPanel.add(Box.createVerticalStrut(10));
+        totalWithDelivery.setAlignmentX(Component.CENTER_ALIGNMENT);
+        containerPanel.add(totalWithDelivery);
+
         containerPanel.add(Box.createVerticalStrut(10));  // Add space between table and button
         payment.setAlignmentX(Component.CENTER_ALIGNMENT); 
         containerPanel.add(payment); // Add Proceed to Payment button
@@ -88,7 +100,7 @@ public class Checkout  {
 
         jFrame.add(topPanel, BorderLayout.NORTH);        
         jFrame.add(containerPanel);
-        jFrame.setSize(600, 400);
+        jFrame.setSize(600, 430);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setVisible(true);
 

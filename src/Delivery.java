@@ -37,7 +37,7 @@ public class Delivery extends Checkout {
         
         // Set up the JFrame layout and components
         jFrame1.setLayout(null);
-        jFrame1.setSize(600, 400); // Set the size of the JFrame
+        jFrame1.setSize(600, 430); // Set the size of the JFrame
 
         jLabel1.setBounds(230, 60, 179, 35); // x, y, width, height
         jFrame1.add(jLabel1);

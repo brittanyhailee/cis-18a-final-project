@@ -13,6 +13,7 @@ public class Cart implements Shopping, Payment{
 
     @Override 
     public float calculateTotal() {
+        total = 0;
         for (int j = 0; j < inCart.size(); j++) {
             total += (float)(inCart.elementAt(j).price * inCart.elementAt(j).quantity);
 
