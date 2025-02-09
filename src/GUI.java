@@ -5,6 +5,7 @@
 import javax.swing.*;
 import java.awt.*;
 
+
 public class GUI {
     public GUI() {
         JFrame frame = new JFrame();
@@ -28,11 +29,16 @@ public class GUI {
 
     public static void main(String[] args) throws java.io.IOException {
         // new GUI();
+
+
         Model m = new Model();
         View v = new View();
         Controller c = new Controller(m,v);
+        
         c.initView();
+        
 
     }
+    
 
 }
