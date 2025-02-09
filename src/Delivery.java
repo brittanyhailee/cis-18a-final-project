@@ -1,7 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.*;
-
+import java.util.Calendar;
 import com.toedter.calendar.JDateChooser;
 
 public class Delivery extends Checkout {
@@ -12,10 +12,16 @@ public class Delivery extends Checkout {
     private JLabel jLabel1;
     private JButton jButton1;
     private String deliveryDate;
+    private Date minDate = new Date(); // sets to current date
+    private Date maxDate;
 
     public Delivery(String n, Cart c) {
         super.setName(n);
         super.setCart(c);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(minDate);
+        calendar.add(Calendar.YEAR, 1);
+        maxDate = calendar.getTime();
         initComponents();
     }
 
@@ -26,8 +32,9 @@ public class Delivery extends Checkout {
         jLabel1 = new JLabel("Set Delivery Date");
         jButton1 = new JButton("Set Date");
         jDateChooser3 = new JDateChooser();
+        jDateChooser3.setMinSelectableDate(minDate);
+        jDateChooser3.setMaxSelectableDate(maxDate);
 
-        
         
         // Set up the JFrame layout and components
         jFrame1.setLayout(null);
@@ -39,6 +46,7 @@ public class Delivery extends Checkout {
         jDateChooser3.setBounds(205, 105, 221, 36); // x, y, width, height
         jFrame1.add(jDateChooser3);
 
+
         jButton1.setBounds(240, 160, 111, 45); // x, y, width, height
         jFrame1.add(jButton1);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -46,6 +54,7 @@ public class Delivery extends Checkout {
                 jButton1ActionPerformed(evt);
             }
         });
+        
 
 
         // Make sure the JFrame closes when clicked
