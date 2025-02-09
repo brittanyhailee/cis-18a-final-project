@@ -86,7 +86,6 @@ public class Checkout  {
         containerPanel.add(payment); // Add Proceed to Payment button
 
 
-
         jFrame.add(topPanel, BorderLayout.NORTH);        
         jFrame.add(containerPanel);
         jFrame.setSize(600, 400);
