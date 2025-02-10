@@ -115,19 +115,46 @@ public class Checkout implements Payment, ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
+        if 
         JPanel paymentPanel = new JPanel();
+        paymentPanel.setLayout(new BoxLayout(paymentPanel, BoxLayout.Y_AXIS));
         JFrame frm = new JFrame("Payment");
-        JLabel amountLabel = new JLabel("Payment Amount: ");
-        amountLabel.setFont(new Font("Calibri", Font.BOLD, 15));
+        JLabel amountLabel = new JLabel("Payment Amount: $" +calculateTotal());
+        amountLabel.setFont(new Font("Lucida Grande", Font.BOLD, 15));
 
-        JLabel total = new JLabel("$" +calculateTotal());
-        total.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
+        paymentPanel.add(Box.createVerticalStrut(10));
+        amountLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        total.setAlignmentX(Component.CENTER_ALIGNMENT);
+        paymentPanel.add(Box.createVerticalStrut(15));
+        JLabel cardName  = new JLabel("Name on Card: ");
+        JTextField nameField = new JTextField(19);
+        cardName.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nameField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nameField.setMaximumSize( nameField.getPreferredSize() );
+
+
+
+        JLabel cardNum  = new JLabel("Card Number: ");
+        JTextField cardField = new JTextField(15);
+        cardNum.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cardField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cardField.setMaximumSize( nameField.getPreferredSize() );
+
+
+        JButton checkoutBtn = new JButton("Checkout");
+        checkoutBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
         paymentPanel.add(amountLabel);
-        paymentPanel.add(total);
+        paymentPanel.add(Box.createVerticalStrut(15));
+        paymentPanel.add(cardName);
+        paymentPanel.add(nameField);
+        paymentPanel.add(Box.createVerticalStrut(15));
+        paymentPanel.add(cardNum);
+        paymentPanel.add(cardField);
+        paymentPanel.add(checkoutBtn);
         frm.add(paymentPanel);
-        frm.setSize(400, 400);
+        frm.setSize(400, 300);
         frm.setVisible(true);
         }
 }
