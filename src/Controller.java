@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -9,12 +10,12 @@ public class Controller {
     private View view;
     private String status = "y";
     private String deliveryDate = "";
-    // private Delivery delivery;
-    // private MyFirstForm f = new MyFirstForm();
+
 
     Scanner sc = new Scanner(System.in);
 
     public Controller(Model m, View v) {
+
         model = m;
         view = v;
     }
