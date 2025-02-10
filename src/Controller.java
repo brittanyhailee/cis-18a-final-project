@@ -21,10 +21,16 @@ public class Controller {
     }
 
     private void purchase() {
-        int i; // item number
+        int i = 0; // item number
         int q; // quantity
-        System.out.print("Enter the item #: ");
-        i = sc.nextInt();
+        do {
+            if (i > (view.inv.products.length)-1) {
+                System.out.println("\nInvalid input! Try again.");
+            }
+            System.out.print("Enter the item #: ");
+            i = sc.nextInt();
+        } while((i > (view.inv.products.length)-1));
+
         System.out.print("Quantity: ");
         q = sc.nextInt();
         model.cart.addToCart(view.inv.products[i].product, view.inv.products[i].price, q);
