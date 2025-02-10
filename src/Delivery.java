@@ -79,6 +79,7 @@ public class Delivery extends Checkout {
 
             System.out.println("Delivery Date: " + deliveryDate);
             super.checkOut(deliveryDate);
+            jFrame1.dispose();
 
             return;
 
