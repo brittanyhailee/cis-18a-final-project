@@ -115,7 +115,7 @@ public class Checkout implements Payment, ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-        if 
+    
         JPanel paymentPanel = new JPanel();
         paymentPanel.setLayout(new BoxLayout(paymentPanel, BoxLayout.Y_AXIS));
         JFrame frm = new JFrame("Payment");
