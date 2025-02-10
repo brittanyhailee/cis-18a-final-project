@@ -25,7 +25,7 @@ public class Controller {
         int q; // quantity
         do {
             if (i > (view.inv.products.length)-1) {
-                System.out.println("\nInvalid input! Try again.");
+                System.out.println("\nInvalid input (Out of Bounds)! Try again.");
             }
             System.out.print("Enter the item #: ");
             i = sc.nextInt();
