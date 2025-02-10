@@ -139,14 +139,11 @@ public class Checkout implements Payment, ActionListener {
             nameField.setAlignmentX(Component.CENTER_ALIGNMENT);
             nameField.setMaximumSize( nameField.getPreferredSize() );
 
-
-
             JLabel cardNum  = new JLabel("Card Number: ");
             JTextField cardField = new JTextField(15);
             cardNum.setAlignmentX(Component.CENTER_ALIGNMENT);
             cardField.setAlignmentX(Component.CENTER_ALIGNMENT);
             cardField.setMaximumSize( nameField.getPreferredSize() );
-
 
             JButton checkoutBtn = new JButton("Checkout");
             checkoutBtn.addActionListener(this);
