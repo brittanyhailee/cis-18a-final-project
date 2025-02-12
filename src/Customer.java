@@ -1,7 +1,9 @@
 class Customer {
     private String fname, lname, email;
-    Address address = new Address();
+    Address address = new Address(); // Create address object for user. 
+    // So, in the Controller.java, address is obtained through the user object. 
 
+    // Create setter fucntions
     public void setEmail(String e) {
         email = e;
     }
@@ -14,6 +16,7 @@ class Customer {
         lname = l;
     }
 
+    // Create getter functions
     public String getFname() {
         return fname;
     }
@@ -70,11 +73,3 @@ class Address {
     }
 
 }
-
-// class Test {
-//     public static void main(String[] args) {
-//         Customer customer = new Customer();
-//         customer.address.city = "Glendale";
-//         System.out.print("Customer lives in " + customer.address.city);
-//     }
-// }

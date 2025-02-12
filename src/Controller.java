@@ -9,43 +9,46 @@ public class Controller {
     private Model model;
     private View view;
     private String status = "y";
-    private String deliveryDate = "";
 
+    Scanner sc = new Scanner(System.in); // Create Scanner object to get user input
 
-    Scanner sc = new Scanner(System.in);
-
+    // Controller constructor that instantiates the model and view objects
     public Controller(Model m, View v) {
-
         model = m;
         view = v;
     }
 
+    // purchase() is when user wants to purchase a product. 
     private void purchase() {
         int i = 0; // item number
         int q; // quantity
+
+        /* User is prompted to enter the index of the product they want to purchase. 
+            The do-while loop below will run at least once, after its first run,
+            it will check whether the user's inputted value is within the bounds of the 
+            product inventory to ensure no out-of-bounds error will occur. If it is, then the loop
+            will keep asking the user for a valid input. 
+        */
         do {
             if (i > (view.inv.products.length)-1) {
                 System.out.println("\nInvalid input (Out of Bounds)! Try again.");
             }
             System.out.print("Enter the item #: ");
             i = sc.nextInt();
-        } while((i > (view.inv.products.length)-1));
+        } while((i > (view.inv.products.length)-1)); // For user validation.
 
         System.out.print("Quantity: ");
         q = sc.nextInt();
         model.cart.addToCart(view.inv.products[i].product, view.inv.products[i].price, q);
-
-        // System.out.println("In cart: ");
-        // for (int j = 0; j < model.cart.inCart.size(); j++) {
-        //     System.out.println(model.cart.inCart.elementAt(j).product);
-        //     System.out.println(model.cart.inCart.elementAt(j).quantity);
-        // }
         status = "y";
 
         shopView();
-
     }
 
+    /* checkStat() determines which action the customer wants to take i.e.,
+     * to continue shopping, see user information, stop shopping, check cart, or if invalid 
+     * input, call checkStat() again.
+     */
     private void checkStat() {
         String choice;
         sc = new Scanner(System.in); // Create new scanner object to clear buffer
@@ -56,27 +59,28 @@ public class Controller {
         System.out.println();
 
         switch(choice) {
-            case "y":
-                shopView();
+            case "y": // Yes, user wants to continue shopping
+                shopView(); 
                 break;
-            case ".":
+            case ".": // Options, user wants to see profile information
                 Options();
                 break;
-            case "n":
+            case "n": // No, user wants to exit the program
                 System.exit(0);
-            case "p":
+            case "p": // Purchase, user wants to purchase something
                 purchase();
                 break;
-            case "c":
+            case "c": // Cart, user wants to see what's in their cart
                 getCart(model.cart);
                 break;
-            default:
+            default: // User picked an invalid choice 
                 System.out.println("Invalid input! Please try again.");
-                checkStat();
+                checkStat(); 
                 
         }
     }
 
+    // logIn() is responsible for setting the values of the model.customer object. 
     private void logIn() {
         System.out.println("Please log in before you shop");
         System.out.print("Email: ");
@@ -87,24 +91,31 @@ public class Controller {
         model.customer.setLname(sc.nextLine());
     }
 
+    // Calls the Options method from view that shows the first name, last name, and 
+    // email of the customer.
     private void Options() {
-
         view.Options(model.customer);
-        checkStat();
+        checkStat(); // call checkStat() again to continue the program.
     }
 
+    // getCart() is called in checkStat() if user wants to see what is inside their cart.
     private void getCart(Cart c) {
-        view.showCart(c);
-        checkOut();
+        view.showCart(c); // Call showCart() function from view
+        checkOut(); // Call checkOut function that checks whether user wants to checkout
 
     }
+
 
     private void checkOut() {
+        // Ask if user wants to checkout
         System.out.println("Checkout? ");
         System.out.println("  y - yes\t|     n - no\t| . - options");
         System.out.print("Choice >> ");
-        status = sc.nextLine();
-        if (status.equals("y")) {
+        status = sc.nextLine(); // Asks for user input
+
+        // If user wants to  checkout, they are asked for their street 
+        // address, city, state, and zip code. 
+        if (status.equals("y")) { 
             String s;
             int i;
             System.out.print("Street Address: ");
@@ -119,36 +130,34 @@ public class Controller {
             System.out.print("Zip Code: ");
             i = sc.nextInt();
             model.customer.address.setZip(i);
-            setDelivery();
+            setDelivery(); // calls setDelivery that prompts user to select delivery date
         } else if (status.equals("n")) {
-            shopView();
+            shopView(); // If user does NOT want to checkout, they are back to seeing Menu items.
         } else if (status.equals(".")) {
-            Options();
-        } else {
+            Options(); // User wants to check personal information
+        } else { // User input invalid choice
             System.out.println("\n\nInvalid input. Please try again!");
-            checkOut();
+            checkOut(); // Call the function again
         }
     }
 
     private void setDelivery() {
         System.out.println("Set delivery date on calendar application...");
+
+        // Calls GUI made with Java Swing that allows user to select delivery date
         new Delivery(model.customer.getFname(), model.cart);         
      
     }
 
-    // private void deliveryInfo() {
-    //     System.out.println("Order for " + model.customer.getFname());
-    //     deliveryDate = delivery.returnDate();
-    //     System.out.println("Delivery will arrive on " + deliveryDate);
-    // }
-    
-
+    // The initial view for the user when program starts 
     public void initView() {
         view.Greet();
         logIn();
         shopView();
     }
 
+    // shopView() will continue to keep showing the menu and checkStat() to 
+    // monitor the user actions throughout the program and if they want to stop.
     public void shopView() {
             do {
                 view.Menu();
