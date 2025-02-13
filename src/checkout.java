@@ -133,9 +133,19 @@ public class Checkout implements Payment, ActionListener {
         // Else, it will display the payment screen which displays payment amount and 
         // asks for name on card and credit card number 
         if (ae.getActionCommand().equals("Checkout")) {
+            System.out.println("\n°.•☆•.°Thank you for shopping with Little Miss Matcha!°.•☆•.°");
+            
+            JPanel finalPanel = new JPanel(new BorderLayout());
+            JFrame finalFrame = new JFrame("Thank you!");
+            JLabel msg = new JLabel("\n°.•☆•.°Thank you for shopping with Little Miss Matcha!°.•☆•.°");
+            finalPanel.add(msg, BorderLayout.CENTER);
+            finalFrame.add(finalPanel);
+            finalFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            finalFrame.setSize(420,100);
+            finalFrame.setVisible(true);
             frm.dispose();
             jFrame.dispose();
-            System.exit(0);
+            // System.exit(0);
         } else {
             JPanel paymentPanel = new JPanel();
             paymentPanel.setLayout(new BoxLayout(paymentPanel, BoxLayout.Y_AXIS));
