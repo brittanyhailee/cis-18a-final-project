@@ -39,10 +39,11 @@ public class Delivery extends Checkout {
         jLabel1 = new JLabel("Set Delivery Date");
         jButton1 = new JButton("Set Date");
         jDateChooser3 = new JDateChooser();
+
+        // Set the minimum and maximum selectable date of the JDateChooser 
         jDateChooser3.setMinSelectableDate(minDate);
         jDateChooser3.setMaxSelectableDate(maxDate);
 
-        
         // Set up the JFrame layout and components
         jFrame1.setLayout(null);
         jFrame1.setSize(600, 430); // Set the size of the JFrame
@@ -56,23 +57,23 @@ public class Delivery extends Checkout {
 
         jButton1.setBounds(240, 160, 111, 45); // x, y, width, height
         jFrame1.add(jButton1);
+        // Add action listener to the button which sets the user's selected delivery date
+        // and will lead the user to the checkout window
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         
-
-
         // Make sure the JFrame closes when clicked
         jFrame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Display the JFrame
         jFrame1.setVisible(true);
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {       
+        // Properly format the date                                  
         SimpleDateFormat f = new SimpleDateFormat("MMMM dd yyyy");
-        Date d1 = null;
         
         try {
             Date date = jDateChooser3.getDate();
@@ -86,12 +87,13 @@ public class Delivery extends Checkout {
             }
 
             System.out.println("Delivery Date: " + deliveryDate);
-            super.checkOut(deliveryDate);
+            super.checkOut(deliveryDate); // Calls the checkout window
             jFrame1.dispose();
 
             return;
 
         } catch(Exception e) {
+            // In case the user attempts to pass an empty date
             System.out.println("Please pick a valid date!");
         }
         return;

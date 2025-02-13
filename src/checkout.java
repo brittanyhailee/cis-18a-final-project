@@ -16,6 +16,7 @@ public class Checkout implements Payment, ActionListener {
     private JFrame jFrame = new JFrame("Checkout");
     JFrame frm = new JFrame("Payment");
 
+    // Setter functions to set required user information
     public void setName(String n) {
         name = n;
     }
@@ -24,6 +25,7 @@ public class Checkout implements Payment, ActionListener {
         cart = c;
     }
 
+    // Getter functions to get required user information 
     public String getName() {
         return name;
     }
@@ -32,6 +34,7 @@ public class Checkout implements Payment, ActionListener {
         return cart;
     }
 
+    // Uses abstract method to calculate the user's total but now with delivery fee
     @Override
     public float calculateTotal() {
         float deliveryFee = (float) 4.50;
@@ -39,6 +42,7 @@ public class Checkout implements Payment, ActionListener {
         return tot;
     }
 
+    // This method shows the user's name, delivery date, and breakdown of items in the cart
     public void checkOut(String date) {
         Vector<String> columns = new Vector<>();
         JPanel topPanel = new JPanel();
@@ -48,10 +52,12 @@ public class Checkout implements Payment, ActionListener {
         
         payment.addActionListener(this);
 
-
+        // Label for the user's total
         JLabel total = new JLabel(("❀༉Total: $" + cart.calculateTotal() + " ❀༉").toString());
+        // Label for the user's total with delivery fee
         JLabel totalWithDelivery = new JLabel(("  +$4.50 Delivery Fee: $" + calculateTotal()).toString());
 
+        // Add values to columns vector that will be used later in the JTable
         columns.add("Product");
         columns.add("Quantity");
         columns.add("Price");
@@ -63,14 +69,16 @@ public class Checkout implements Payment, ActionListener {
         name.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the name label
         delivery.setAlignmentX(Component.CENTER_ALIGNMENT); // Center the delivery label
 
-        topPanel.add(Box.createVerticalStrut(10)); // Add space before the name label (optional)
+        topPanel.add(Box.createVerticalStrut(10)); // Add space before the name label
         topPanel.add(name);
-        topPanel.add(Box.createVerticalStrut(10)); // Add space before the name delivery (optional)
+        topPanel.add(Box.createVerticalStrut(10)); // Add space before the name delivery
         topPanel.add(delivery);
-        topPanel.add(Box.createVerticalStrut(10)); // Add space after the delivery label (optional)
+        topPanel.add(Box.createVerticalStrut(10)); // Add space after the delivery label 
 
         Vector<Vector<Object>> tableData = new Vector<>();
 
+        // Initialize the data to be stored in the row which will be each product detail
+        // from the user's cart. (product, quantity, price)
         for (int j = 0; j < cart.inCart.size(); j++) {
             Vector<Object> row = new Vector<>();
             row.add(cart.inCart.elementAt(j).product);
@@ -116,8 +124,14 @@ public class Checkout implements Payment, ActionListener {
 
     }
 
+    // Event handler for checkout button
     public void actionPerformed(ActionEvent ae) {
         
+        // Get the action command of the button.
+        // If the command is checkout, then that means the user has checked out 
+        // and is done with the program.
+        // Else, it will display the payment screen which displays payment amount and 
+        // asks for name on card and credit card number 
         if (ae.getActionCommand().equals("Checkout")) {
             frm.dispose();
             jFrame.dispose();
@@ -134,22 +148,23 @@ public class Checkout implements Payment, ActionListener {
 
             paymentPanel.add(Box.createVerticalStrut(15));
             JLabel cardName  = new JLabel("Name on Card: ");
-            JTextField nameField = new JTextField(19);
+            JTextField nameField = new JTextField(19); // Create text field for name on card 
             cardName.setAlignmentX(Component.CENTER_ALIGNMENT);
             nameField.setAlignmentX(Component.CENTER_ALIGNMENT);
             nameField.setMaximumSize( nameField.getPreferredSize() );
 
             JLabel cardNum  = new JLabel("Card Number: ");
-            JTextField cardField = new JTextField(15);
+            JTextField cardField = new JTextField(15); // Create text field for card number
             cardNum.setAlignmentX(Component.CENTER_ALIGNMENT);
             cardField.setAlignmentX(Component.CENTER_ALIGNMENT);
             cardField.setMaximumSize( nameField.getPreferredSize() );
 
-            JButton checkoutBtn = new JButton("Checkout");
-            checkoutBtn.addActionListener(this);
+            JButton checkoutBtn = new JButton("Checkout"); // Create checkout button
+            checkoutBtn.addActionListener(this); // Add action listener to checkout button as this will
+                                                // determine whether the user is done entering required inputs
             checkoutBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-
+            // add all elements to panel
             paymentPanel.add(amountLabel);
             paymentPanel.add(Box.createVerticalStrut(15));
             paymentPanel.add(cardName);
@@ -158,6 +173,7 @@ public class Checkout implements Payment, ActionListener {
             paymentPanel.add(cardNum);
             paymentPanel.add(cardField);
             paymentPanel.add(checkoutBtn);
+            // add panel to frame
             frm.add(paymentPanel);
             frm.setSize(400, 300);
             frm.setVisible(true);
