@@ -12,7 +12,8 @@ public class View {
     }
 
     public void Options(Customer c) {
-        // Prints out user details
+        // Prints out user details using the customer object to call 
+        // the methods within the customer class 
         System.out.println("\t\t𐙚Options𐙚");
         System.out.println("\tFirst name: \t" + c.getFname());
         System.out.println("\tLast name: \t" + c.getLname());
@@ -24,7 +25,7 @@ public class View {
 
     public void showCart(Cart cart) {
         // prints out items in user's cart. 
-        // Cart is a vector 
+        // Cart is a vector so we access using elementAt(index)
         System.out.println("\t\t𐙚Cart𐙚");
         for (int j = 0; j < cart.inCart.size(); j++) {
             // System.out.printf("%20s", products[i].product);

@@ -3,7 +3,7 @@ class Customer {
     Address address = new Address(); // Create address object for user. 
     // So, in the Controller.java, address is obtained through the user object. 
 
-    // Create setter fucntions
+    // Create setter functions for email, first and last name
     public void setEmail(String e) {
         email = e;
     }
@@ -16,7 +16,7 @@ class Customer {
         lname = l;
     }
 
-    // Create getter functions
+    // Create getter functions for email, first and last name
     public String getFname() {
         return fname;
     }
@@ -35,11 +35,13 @@ class Customer {
 }
 
 class Address {
+    // Creates the blueprint for the address. Address will ask for street name, city, state, and zip
     String street;
     String city;
     String state;
     int zip;
 
+    // Setter functions
     public void setStreetAddr(String s) {
         street = s;
     }
@@ -56,6 +58,7 @@ class Address {
         zip = z; 
     }
 
+    // Getter functions
     public String getStreetAddr() {
         return street;
     }

@@ -14,7 +14,7 @@ public class Cart implements Shopping, Payment{
         inCart.add(p); // Add the product object into the user's inCart object
     }
 
-    // Cart implementing the abstrat method from Payment interface
+    // Cart implementing the abstract method from Payment interface
     @Override 
     public float calculateTotal() {
         total = 0;

@@ -1,6 +1,7 @@
 /* This is a business program selling matcha
  * GUI.java contains the main() program.
- * To run the program, select 'Run and Debug' on VSCode or other IDEs 
+ * To run the program, select 'Run and Debug' on VSCode or other IDEs.
+ * Otherwise, run the program through terminal. 
  */
 
 
