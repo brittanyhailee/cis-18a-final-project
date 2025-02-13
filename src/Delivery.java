@@ -6,25 +6,33 @@ import com.toedter.calendar.JDateChooser;
 
 public class Delivery extends Checkout {
 
+    // Create instance variables for Java Swing such as frame, date chooser, label, and button
     private JFrame jFrame1; 
     private JDateChooser jDateChooser3;
     private JLabel jLabel1;
     private JButton jButton1;
     private String deliveryDate;
-    private Date minDate = new Date(); // sets to current date
+
+    // These Date variables are to calculate the minimum and maximum
+    // delivery date that the user can pick
+    private Date minDate = new Date(); // Sets to current date
     private Date maxDate;
 
+
     public Delivery(String n, Cart c) {
+        // Pass arguments required for super constructor 
         super.setName(n);
         super.setCart(c);
+
+        // Create calendar instance 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(minDate);
-        calendar.add(Calendar.YEAR, 1);
+        calendar.add(Calendar.YEAR, 1); // Add 1 year to the minimum date and this gives the max
+                                            // date that the customer can schedule their delivery
         maxDate = calendar.getTime();
-        initComponents();
+        initComponents(); // Initialize the Java Swing GUI
     }
-
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+                  
     private void initComponents() {
 
         jFrame1 = new JFrame("Delivery Date Setter");
@@ -85,7 +93,6 @@ public class Delivery extends Checkout {
 
         } catch(Exception e) {
             System.out.println("Please pick a valid date!");
-            // e.printStackTrace();
         }
         return;
     } 
