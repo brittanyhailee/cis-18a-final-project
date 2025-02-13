@@ -1,10 +1,11 @@
+package classes;
 import java.util.Vector;
 
 public class Cart implements Shopping, Payment{
 
     /* inCart is the cart of the user and it is the vector so user 
       can add as much items as they want into the cart. */
-    Vector<Product> inCart = new Vector<Product>();
+    public Vector<Product> inCart = new Vector<Product>();
     float total = 0;
     
     // Cart implementing the abstract method from Shopping interface

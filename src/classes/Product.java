@@ -1,8 +1,9 @@
+package classes;
 
 public class Product {
-    String product;
-    float price;
-    int quantity;
+    public String product;
+    public float price;
+    public int quantity;
 
     /* Method overloading */
 

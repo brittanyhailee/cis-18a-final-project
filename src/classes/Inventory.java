@@ -1,8 +1,9 @@
+package classes;
 public class Inventory {
 
     // a final array of Product types to prevent users from modifying the product inventory
     // Product is a class with constructor Product(String name, float price)
-    final Product[] products = {
+    public final Product[] products = {
         new Product("ceremonial matcha", (float) 18.99),
         new Product("matcha whisk", (float) 5.99),
         new Product("matcha bowl", (float) 7.99),

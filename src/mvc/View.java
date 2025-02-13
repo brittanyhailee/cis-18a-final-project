@@ -1,3 +1,9 @@
+package mvc;
+import classes.Cart;
+import classes.Customer;
+import classes.Inventory;
+
+
 public class View {
     Inventory inv = new Inventory();
     public void Greet() {
