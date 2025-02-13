@@ -159,11 +159,11 @@ public class Controller {
     // shopView() will continue to keep showing the menu and checkStat() to 
     // monitor the user actions throughout the program and if they want to stop.
     public void shopView() {
-            do {
+            while (true) {
                 view.Menu();
                 checkStat();
         
-            } while (true);
+            } 
     }
 
 }
